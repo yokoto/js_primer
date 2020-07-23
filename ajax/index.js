@@ -1,10 +1,11 @@
-function main() {
-  fetchUserInfo('js-primer-example')
-    .then((userInfo) => createView(userInfo))
-    .then((view) => displayView(view))
-    .catch((error) => {
-      console.error(`エラーが発生しました（${error}）`);
-    });
+async function main() {
+  try {
+    const userInfo = await fetchUserInfo('js-primer-example');
+    const view = createView(userInfo);
+    displayView(view);
+  } catch (error) {
+    console.error(`エラーが発生しました（${error}）`);
+  }
 }
 
 function fetchUserInfo(userId) {
